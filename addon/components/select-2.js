@@ -165,7 +165,7 @@ var Select2Component = Ember.Component.extend({
 
         deferred.promise.then(function(data) {
           Ember.run.later(self, function(){
-            $('body').resize();
+            self.get("_select").select2("positionDropdown");
           }, 100);
           if (data instanceof Ember.ArrayProxy) {
             data = data.toArray();
