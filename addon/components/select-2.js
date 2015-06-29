@@ -164,6 +164,9 @@ var Select2Component = Ember.Component.extend({
         self.sendAction('query', query, deferred);
 
         deferred.promise.then(function(data) {
+          Ember.run.later(self, function(){
+            $('body').resize();
+          }, 100);
           if (data instanceof Ember.ArrayProxy) {
             data = data.toArray();
           }
